@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">NYTMovies</string>
+
+    <string name="msg_Erro404">404 - Servidor não responde</string>
+    <string name="msg_Erro500">500 - Servidor não encontrado, favor comunicar ao nosso suporte</string>
+    <string name="msg_ErroGenerico">Erro Desconhecido - Favor entre em contato com nosso suporte</string>
+    <string name="msg_ErroTimeout">Servidor não respondeu em tempo hábil, favor reiniciar a aplicação ou tente mais tarde</string>
+    <string name="msg_ErroOBJJson">Estrutura do Objeto JSON inválido</string>
+
+    <string name="exception_timeout">SocketTimeoutException</string>
+    <string name="exception_json_objreturn">IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT</string>
+
+</resources>
