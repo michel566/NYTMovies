@@ -1,14 +1,16 @@
 package com.michelbarbosa.nytmovies.ui
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Message
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.michelbarbosa.nytmovies.R
 import com.michelbarbosa.nytmovies.enums.ErrorType
-import com.michelbarbosa.nytmovies.model.Movie
+import com.michelbarbosa.nytmovies.data.dao.movie.Movie
+import com.michelbarbosa.nytmovies.data.dao.movie.MovieViewModel
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesContract
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesPresenter
 import michel566.androidmodules.lightdialog.DialogType
@@ -18,10 +20,14 @@ class NYTMoviesActivity : AppCompatActivity(), NYTMoviesContract.ShowMoviesView,
 
     private var adapter: NYTMoviesAdapter? = null
     private val presenter: NYTMoviesContract.NYTMoviesPresenter = NYTMoviesPresenter(this)
+    lateinit var movieViewModel: MovieViewModel
+    lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.nytmovies_activity)
+        context = this@NYTMoviesActivity
+        movieViewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
 
         adapterConfig()
 
@@ -42,7 +48,8 @@ class NYTMoviesActivity : AppCompatActivity(), NYTMoviesContract.ShowMoviesView,
     }
 
     override fun showMovies(movies: List<Movie>) {
-        adapter?.setMovieList(movies)
+       // adapter?.setMovieList(movies)
+        movieViewModel.insertMovieList(context, movies)
     }
 
     override fun showError(errorType: ErrorType, dialogType: DialogType) {

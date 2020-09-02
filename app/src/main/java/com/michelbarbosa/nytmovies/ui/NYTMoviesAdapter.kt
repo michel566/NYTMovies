@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.michelbarbosa.nytmovies.R
-import com.michelbarbosa.nytmovies.model.Movie
+import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.ui.NYTMoviesAdapter.NYTMoviesViewHolder
 import java.util.*
 

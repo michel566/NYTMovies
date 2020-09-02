@@ -1,6 +1,6 @@
 package com.michelbarbosa.nytmovies.mapper
 
-import com.michelbarbosa.nytmovies.model.Movie
+import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.network.response.MovieResult
 import com.michelbarbosa.nytmovies.network.response.NYTMoviesResponse
 import java.util.*
