@@ -52,14 +52,17 @@ class NYTMoviesPresenter(private var view: NYTMoviesContract.ShowMoviesView?) :
 
             override fun onFailure(call: Call<NYTMoviesResponse>, t: Throwable) {
                 progressDialog.dismiss()
-                if (t.toString().contains(context.getResources().getString(R.string.exception_timeout))) {
-                    view!!.showError(ErrorType.TIMEOUT, DialogType.ALERT)
-                } else if (t.toString()
-                        .contains(context.getResources().getString(R.string.exception_json_objreturn))
-                ) {
-                    view!!.showError(ErrorType.JSON_OBJ_RETURN, DialogType.ERROR)
-                } else {
-                    view!!.showError(ErrorType.DEFAULT, DialogType.ERROR)
+                when {
+                    t.toString().contains(context.resources.getString(R.string.exception_timeout)) -> {
+                        view!!.showError(ErrorType.TIMEOUT, DialogType.ALERT)
+                    }
+                    t.toString()
+                        .contains(context.resources.getString(R.string.exception_json_objreturn)) -> {
+                        view!!.showError(ErrorType.JSON_OBJ_RETURN, DialogType.ERROR)
+                    }
+                    else -> {
+                        view!!.showError(ErrorType.DEFAULT, DialogType.ERROR)
+                    }
                 }
                 Log.i("--> onFailure: ", call.request().toString())
                 Log.i("--> Exception: ", t.toString())

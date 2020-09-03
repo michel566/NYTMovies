@@ -23,7 +23,11 @@ object NYTMovieMapper {
                         result.date_updated,
                         result.link.suggested_link_text,
                         result.link.url,
-                        result.multimedia.src!!
+                        if(result.multimedia == null){
+                            ""
+                        } else{
+                            result.multimedia.src!!
+                        }
                     )
                 movieList.add(movie)
             }

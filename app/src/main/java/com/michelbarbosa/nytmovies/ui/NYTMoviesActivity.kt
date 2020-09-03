@@ -114,4 +114,9 @@ class NYTMoviesActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
         adapter?.filter?.filter(newText)
     }
 
+    override fun findForQuery(query: String) {
+        super.findForQuery(query)
+        presenter.getAllMovies(this, query, 0)
+    }
+
 }
