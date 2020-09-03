@@ -25,6 +25,14 @@ class MovieRepository {
             }
         }
 
+        fun insertMovie(context: Context, movie: Movie){
+            appDatabase = initializeDB(context = context)
+
+            CoroutineScope(IO).launch {
+                appDatabase!!.movieDao().InsertMovie(movie)
+            }
+        }
+
         fun getAllMovies(context: Context) : LiveData<List<Movie>>?{
             appDatabase = initializeDB(context)
             movieLDList = appDatabase!!.movieDao().getAllMovies()

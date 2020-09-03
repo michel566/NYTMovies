@@ -4,9 +4,9 @@ import android.app.AlertDialog
 import android.content.Context
 import android.util.Log
 import com.michelbarbosa.nytmovies.R
+import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.enums.ErrorType
 import com.michelbarbosa.nytmovies.mapper.NYTMovieMapper
-import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.network.RetrofitClientInstance
 import com.michelbarbosa.nytmovies.network.response.NYTMoviesResponse
 import com.michelbarbosa.nytmovies.util.UiUtil

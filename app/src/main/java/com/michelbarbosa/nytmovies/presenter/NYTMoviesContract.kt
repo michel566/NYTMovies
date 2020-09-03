@@ -1,8 +1,8 @@
 package com.michelbarbosa.nytmovies.presenter
 
 import android.content.Context
-import com.michelbarbosa.nytmovies.enums.ErrorType
 import com.michelbarbosa.nytmovies.data.dao.movie.Movie
+import com.michelbarbosa.nytmovies.enums.ErrorType
 import michel566.androidmodules.lightdialog.DialogType
 
 interface NYTMoviesContract {

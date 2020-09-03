@@ -10,17 +10,19 @@ class MovieViewModel : ViewModel() {
 
     fun insertMovieList(context: Context, currentList: List<Movie>?, newList: List<Movie>){
         var innerJoinList : MutableList<Movie>? = ArrayList<Movie>()
-        if (currentList != null) {
-            for (movie in newList){
-                if(!currentList.contains(movie)){
-                    innerJoinList?.add(movie)
+        if(currentList != newList){
+            if (currentList != null) {
+                for (movie in newList){
+                    if(!currentList.contains(movie)){
+                        innerJoinList?.add(movie)
+                    }
                 }
+                if (innerJoinList != null) {
+                    MovieRepository.insertMovieList(context, innerJoinList)
+                }
+            } else{
+                MovieRepository.insertMovieList(context, newList)
             }
-            if (innerJoinList != null) {
-                MovieRepository.insertMovieList(context, innerJoinList)
-            }
-        } else{
-            MovieRepository.insertMovieList(context, newList)
         }
 
     }

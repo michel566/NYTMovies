@@ -17,6 +17,7 @@ object NYTMovieMapper {
                     Movie(
                         result.display_title,
                         result.mpaa_rating,
+                        result.byline,
                         result.headline,
                         result.summary_short,
                         result.publication_date,
@@ -27,7 +28,8 @@ object NYTMovieMapper {
                             ""
                         } else{
                             result.multimedia.src!!
-                        }
+                        },
+                        false
                     )
                 movieList.add(movie)
             }

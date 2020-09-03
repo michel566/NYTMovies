@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.michelbarbosa.nytmovies.R
 import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.ui.NYTMoviesAdapter.NYTMoviesViewHolder
-import java.util.*
 import kotlin.collections.ArrayList
 
 class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) :
@@ -34,10 +33,10 @@ class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) 
     }
 
     fun getMovieList(): List<Movie>?{
-        if (movieList!!.size != 0){
-            return this.movieList
-        }else{
-            return null
+        return if (movieList!!.isNotEmpty())
+            this.movieList
+        else{
+            null
         }
     }
 
@@ -45,7 +44,7 @@ class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) 
         return NYTMoviesViewHolder(
             LayoutInflater.from(
                 parent.context
-            ).inflate(R.layout.nytmovie_item, parent, false)
+            ).inflate(R.layout.nytm_item_of_list, parent, false)
         )
     }
 
@@ -72,7 +71,7 @@ class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) 
                     movieListFull
                 else
                     movieListFull.filter {
-                        it.title.toLowerCase().contains(queryString)
+                        it.title!!.toLowerCase().contains(queryString)
                     }
                 return filterResults
             }

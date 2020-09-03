@@ -4,6 +4,10 @@
     <string name="action_search">Search</string>
     <string name="toolbarTitleList">All Movies</string>
 
+    <string name="tv_nytm_detail_link">See More: %s</string>
+    <string name="tv_nytm_detail_byLine">By line %s</string>
+    <string name="tv_nytm_detail_mpaaRating">Film Rating: %s</string>
+
     <string name="msg_Erro404">404 - Servidor não responde</string>
     <string name="msg_Erro500">500 - Servidor não encontrado, favor comunicar ao nosso suporte</string>
     <string name="msg_ErroGenerico">Erro Desconhecido - Favor entre em contato com nosso suporte</string>

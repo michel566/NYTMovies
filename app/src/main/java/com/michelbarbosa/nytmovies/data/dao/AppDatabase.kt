@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.michelbarbosa.nytmovies.data.dao.movie.MovieDao
 import com.michelbarbosa.nytmovies.data.dao.movie.Movie
+import com.michelbarbosa.nytmovies.data.dao.movie.MovieDao
 
 
 @Database(entities = arrayOf(Movie::class), version = 1, exportSchema = false)

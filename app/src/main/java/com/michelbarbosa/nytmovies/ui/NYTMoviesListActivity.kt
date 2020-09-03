@@ -2,41 +2,38 @@ package com.michelbarbosa.nytmovies.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.michelbarbosa.nytmovies.R
 import com.michelbarbosa.nytmovies.data.dao.movie.Movie
-import com.michelbarbosa.nytmovies.data.dao.movie.MovieViewModel
 import com.michelbarbosa.nytmovies.enums.ErrorType
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesContract
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesPresenter
 import michel566.androidmodules.lightdialog.DialogType
 import michel566.androidmodules.lightdialog.LightDialog
 
-class NYTMoviesActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
+class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
     ItemMovieClickListener {
 
     private var adapter: NYTMoviesAdapter? = null
     private val presenter: NYTMoviesContract.NYTMoviesPresenter = NYTMoviesPresenter(this)
-    lateinit var movieViewModel: MovieViewModel
     lateinit var context: Context
     var page: Int = 1
 
+    companion object {
+        const val REF_MOVIE = "reference_movie"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setLayoutContent(R.layout.nytmovies_activity)
+        setLayoutContent(R.layout.nytm_list_activity)
         setToolbar()
         setToolbarTitle(R.string.toolbarTitleList)
 
-        context = this@NYTMoviesActivity
-        movieViewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
+        context = this@NYTMoviesListActivity
 
         adapterConfig()
-
-        //teste de chamada de api
         presenter.getAllMovies(this, "", 0)
         showMovies()
     }
@@ -66,7 +63,8 @@ class NYTMoviesActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
     }
 
     override fun onClickMovie(movie: Movie) {
-        Toast.makeText(this, movie.dateUpdated, Toast.LENGTH_SHORT).show()
+       // Toast.makeText(this, movie.dateUpdated, Toast.LENGTH_SHORT).show()
+        advanceToMovieDetails(context, REF_MOVIE, movie)
     }
 
     override fun loadAllMovies(movies: List<Movie>) {
