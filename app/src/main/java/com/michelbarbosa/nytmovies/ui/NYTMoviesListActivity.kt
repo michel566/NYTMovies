@@ -49,21 +49,22 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(1)
-                    && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    && newState == RecyclerView.SCROLL_STATE_IDLE
+                ) {
                     loadWhileScrollPage()
                 }
             }
         })
     }
 
-    private fun loadWhileScrollPage(){
+    private fun loadWhileScrollPage() {
         presenter.getAllMovies(context, "", page)
         showMovies()
         page++
     }
 
     override fun onClickMovie(movie: Movie) {
-       // Toast.makeText(this, movie.dateUpdated, Toast.LENGTH_SHORT).show()
+        // Toast.makeText(this, movie.dateUpdated, Toast.LENGTH_SHORT).show()
         advanceToMovieDetails(context, REF_MOVIE, movie)
     }
 
@@ -100,6 +101,13 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
 
     private fun showMovies() {
         movieViewModel.getAllMovies(context)!!.observe(
+            this,
+            Observer {
+                adapter!!.setMovieList(it)
+            }
+        )
+
+        movieViewModel.getResult(context)!!.observe(
             this,
             Observer {
                 adapter!!.setMovieList(it)
