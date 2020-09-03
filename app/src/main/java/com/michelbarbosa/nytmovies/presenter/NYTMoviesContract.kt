@@ -8,12 +8,12 @@ import michel566.androidmodules.lightdialog.DialogType
 interface NYTMoviesContract {
 
     interface ShowMoviesView {
-        fun showMovies(movies: List<Movie>)
+        fun loadAllMovies(movies: List<Movie>)
         fun showError(errorType: ErrorType, dialogType: DialogType)
     }
 
     interface NYTMoviesPresenter{
-        fun getAllMovies(context: Context, query: String, numOfPages: Int)
+        fun getAllMovies(context: Context, query: String, pageNumber: Int)
     }
 
 }

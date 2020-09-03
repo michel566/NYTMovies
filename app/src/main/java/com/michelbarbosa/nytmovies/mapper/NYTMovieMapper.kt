@@ -11,8 +11,7 @@ object NYTMovieMapper {
         val movieList: MutableList<Movie> =
             ArrayList()
         if (response != null) {
-            val results: List<MovieResult>
-            results = response.results
+            val results: List<MovieResult> = response.results
             for (result in results) {
                 val movie =
                     Movie(
@@ -24,7 +23,7 @@ object NYTMovieMapper {
                         result.date_updated,
                         result.link.suggested_link_text,
                         result.link.url,
-                        result.multimedia.src
+                        result.multimedia.src!!
                     )
                 movieList.add(movie)
             }

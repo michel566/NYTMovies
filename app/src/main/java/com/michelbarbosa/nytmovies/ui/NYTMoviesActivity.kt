@@ -1,60 +1,81 @@
 package com.michelbarbosa.nytmovies.ui
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.michelbarbosa.nytmovies.R
-import com.michelbarbosa.nytmovies.enums.ErrorType
 import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.data.dao.movie.MovieViewModel
+import com.michelbarbosa.nytmovies.enums.ErrorType
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesContract
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesPresenter
 import michel566.androidmodules.lightdialog.DialogType
 import michel566.androidmodules.lightdialog.LightDialog
 
-class NYTMoviesActivity : AppCompatActivity(), NYTMoviesContract.ShowMoviesView, ItemMovieClickListener{
+class NYTMoviesActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
+    ItemMovieClickListener {
 
     private var adapter: NYTMoviesAdapter? = null
     private val presenter: NYTMoviesContract.NYTMoviesPresenter = NYTMoviesPresenter(this)
     lateinit var movieViewModel: MovieViewModel
     lateinit var context: Context
+    var page: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.nytmovies_activity)
+        setLayoutContent(R.layout.nytmovies_activity)
+        setToolbar()
+        setToolbarTitle(R.string.toolbarTitleList)
+
         context = this@NYTMoviesActivity
         movieViewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
 
         adapterConfig()
 
         //teste de chamada de api
-        presenter.getAllMovies(this, "", 1)
+        presenter.getAllMovies(this, "", 0)
+        showMovies()
     }
 
-    private fun adapterConfig(){
+    private fun adapterConfig() {
         val rvMovies: RecyclerView = findViewById(R.id.rv_nytMovieList)
         adapter = NYTMoviesAdapter(this)
         val linearLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         rvMovies.layoutManager = linearLayoutManager
         rvMovies.adapter = adapter
+
+        rvMovies.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)
+                    && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    loadWhileScrollPage()
+                }
+            }
+        })
+    }
+
+    private fun loadWhileScrollPage(){
+        presenter.getAllMovies(context, "", page)
+        showMovies()
+        page++
     }
 
     override fun onClickMovie(movie: Movie) {
         Toast.makeText(this, movie.dateUpdated, Toast.LENGTH_SHORT).show()
     }
 
-    override fun showMovies(movies: List<Movie>) {
-       // adapter?.setMovieList(movies)
-        movieViewModel.insertMovieList(context, movies)
+    override fun loadAllMovies(movies: List<Movie>) {
+        movieViewModel.insertMovieList(context, adapter?.getMovieList(), movies)
     }
 
     override fun showError(errorType: ErrorType, dialogType: DialogType) {
         when (errorType) {
-            ErrorType.NETWORK, ErrorType.TIMEOUT ->{
+            ErrorType.NETWORK, ErrorType.TIMEOUT -> {
                 showErrorDialog(resources.getString(R.string.msg_ErroTimeout), dialogType)
             }
             ErrorType.CURRENT_OBJ_NULL -> {
@@ -66,14 +87,31 @@ class NYTMoviesActivity : AppCompatActivity(), NYTMoviesContract.ShowMoviesView,
                 resources.getString(R.string.msg_ErroOBJJson),
                 dialogType
             )
-            ErrorType.RESPONSE -> showErrorDialog(resources.getString(R.string.msg_ErroGenerico), dialogType)
+            ErrorType.RESPONSE -> showErrorDialog(
+                resources.getString(R.string.msg_ErroGenerico),
+                dialogType
+            )
             else -> showErrorDialog(resources.getString(R.string.msg_ErroGenerico), dialogType)
         }
     }
 
-    private fun showErrorDialog(message: String, dialogType: DialogType){
+    private fun showErrorDialog(message: String, dialogType: DialogType) {
         val dialog = LightDialog(this, message, dialogType, true)
         dialog.show()
+    }
+
+    private fun showMovies() {
+        movieViewModel.getAllMovies(context)!!.observe(
+            this,
+            Observer {
+                adapter!!.setMovieList(it)
+            }
+        )
+    }
+
+    override fun setAdapterFilter(newText: String?) {
+        super.setAdapterFilter(newText)
+        adapter?.filter?.filter(newText)
     }
 
 }

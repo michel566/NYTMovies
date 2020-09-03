@@ -21,10 +21,10 @@ class NYTMoviesPresenter(private var view: NYTMoviesContract.ShowMoviesView?) :
 
     private val API_KEY = "h0QvQQzJAkUgUGPEu7ymQUwNsBOxCWb8"
 
-    override fun getAllMovies(context: Context, query: String, numOfPages: Int) {
+    override fun getAllMovies(context: Context, query: String, pageNumber: Int) {
         getAllReviewMovie(
             context, RetrofitClientInstance.instance!!.getAllReviewMovies
-                (query, API_KEY, Util.changeNumPagesInOffset(numOfPages))
+                (query, API_KEY, Util.changeNumPagesInOffset(pageNumber))
         )
     }
 
@@ -43,7 +43,7 @@ class NYTMoviesPresenter(private var view: NYTMoviesContract.ShowMoviesView?) :
                 } else {
                     if (response.body() != null) {
                         val movieList: List<Movie> = NYTMovieMapper.movieMapper(response.body())
-                        view!!.showMovies(movieList)
+                        view!!.loadAllMovies(movieList)
                     } else {
                         errorResponse(context, response)
                     }
