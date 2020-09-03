@@ -14,6 +14,9 @@ data class Movie(
     @ColumnInfo(name = "mpaa_rating")
     var mpaaRating: String,
 
+    @ColumnInfo(name = "byLine")
+    var byLine: String,
+
     @ColumnInfo(name = "headline")
     var headLine: String,
 
@@ -33,7 +36,10 @@ data class Movie(
     var urlReview: String,
 
     @ColumnInfo(name = "url_picture")
-    var urlPicture: String
+    var urlPicture: String,
+
+    @ColumnInfo(name = "favorite")
+    var favorite: Boolean
 
 ) : Serializable {
 

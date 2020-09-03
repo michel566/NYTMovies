@@ -15,7 +15,7 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun InsertMovieList(movieList : List<Movie>)
 
-    @Query("SELECT * FROM Movie ORDER BY date_updated DESC")
+    @Query("SELECT DISTINCT * FROM Movie ORDER BY date_updated DESC")
     fun getAllMovies() : LiveData<List<Movie>>
 
 }
