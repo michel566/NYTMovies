@@ -10,11 +10,11 @@
     <string name="tv_nytm_detail_publicationDate">Published %s</string>
     <string name="tv_nytm_detail_summaryShort">The work of a 20th-century dance innovator inspires four women of the present day in this film, composed like a piece of music by Damien Manivel. | %s</string>
 
-    <string name="msg_Erro404">404 - Servidor não responde</string>
-    <string name="msg_Erro500">500 - Servidor não encontrado, favor comunicar ao nosso suporte</string>
-    <string name="msg_ErroGenerico">Erro Desconhecido - Favor entre em contato com nosso suporte</string>
-    <string name="msg_ErroTimeout">Servidor não respondeu em tempo hábil, favor reiniciar a aplicação ou tente mais tarde</string>
-    <string name="msg_ErroOBJJson">Estrutura do Objeto JSON inválido</string>
+    <string name="msg_Erro404">404 - Server not responding</string>
+    <string name="msg_Erro500">500 - Server not find</string>
+    <string name="msg_ErroGenerico">Unknown Error</string>
+    <string name="msg_ErroTimeout">The server did not respond in a timely manner, restart the application or try later</string>
+    <string name="msg_ErroOBJJson">Invalid JSON Structure</string>
 
     <string name="exception_timeout">SocketTimeoutException</string>
     <string name="exception_json_objreturn">IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT</string>
@@ -27,5 +27,7 @@
     <string name="toast_content_notAvail">Content not available</string>
     <string name="tv_nytm_detail_updatedDate">Updated %s</string>
     <string name="tv_headLine">Isadora’s Children’ Review: Variations on Sorrow</string>
+    <string name="msg_low_network">Your connection is bad or slow, please connect to a better network</string>
+    <string name="msg_no_network">Check your device\'s network connection</string>
 
 </resources>
