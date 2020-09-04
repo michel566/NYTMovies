@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
@@ -12,56 +11,19 @@
 
         <ImageView
             android:id="@+id/iv_nytm_detail"
-            android:layout_width="303dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="@dimen/itemMargin_default"
-            android:layout_marginLeft="@dimen/itemMargin_default"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/itemMargin_default"
-            android:layout_marginEnd="@dimen/itemMargin_default"
-            android:layout_marginRight="@dimen/itemMargin_default"
+            android:layout_marginBottom="@dimen/itemMargin_default"
             android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
             app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
         <TextView
             android:id="@+id/tv_nytm_detail_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="@dimen/detailMargin_image"
-            android:layout_marginRight="@dimen/detailMargin_image"
-            android:layout_marginBottom="@dimen/itemMargin_default"
-            android:text="Isadora's Children"
-            android:textSize="@dimen/titleLargeSize"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/guideline"
-            app:layout_constraintEnd_toEndOf="@+id/iv_nytm_detail"
-            app:layout_constraintStart_toStartOf="@+id/iv_nytm_detail"
-            app:layout_constraintTop_toBottomOf="@+id/iv_nytm_detail" />
-
-        <ImageView
-            android:id="@+id/iv_nytm_detail_favorite"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/itemMargin_default"
-            android:src="@drawable/ic_star_border"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-        <ImageView
-            android:id="@+id/iv_nytm_detail_share"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="@dimen/itemMargin_default"
-            android:src="@drawable/ic_share"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-        <TextView
-            android:id="@+id/tv_nytm_detail_mpaaRating"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/itemMargin_default"
@@ -69,11 +31,54 @@
             android:layout_marginTop="@dimen/itemMargin_default"
             android:layout_marginEnd="@dimen/itemMargin_default"
             android:layout_marginRight="@dimen/itemMargin_default"
-            android:text="@string/tv_nytm_detail_mpaaRating"
-            android:textSize="@dimen/textMediumSize"
+            android:layout_marginBottom="@dimen/itemMargin_default"
+            android:gravity="center"
+            android:text="@string/tv_title"
+            android:textSize="@dimen/textLargeSize"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/iv_nytm_detail_favorite" />
+            app:layout_constraintTop_toTopOf="@+id/guideline11" />
+
+        <ImageView
+            android:id="@+id/iv_nytm_detail_favorite"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_star_border"
+            app:layout_constraintBottom_toTopOf="@+id/guideline8"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintHorizontal_bias="0.475"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <ImageView
+            android:id="@+id/iv_nytm_detail_share"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/selector_share"
+            app:layout_constraintBottom_toTopOf="@+id/guideline8"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <TextView
+            android:id="@+id/tv_nytm_detail_headline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@string/tv_headLine"
+            android:textSize="@dimen/textBigSize"
+            app:layout_constraintBottom_toTopOf="@+id/guideline9"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
         <TextView
             android:id="@+id/tv_nytm_detail_byLine"
@@ -84,26 +89,41 @@
             android:layout_marginTop="@dimen/itemMargin_default"
             android:layout_marginEnd="@dimen/itemMargin_default"
             android:layout_marginRight="@dimen/itemMargin_default"
-            android:text="@string/tv_nytm_detail_byLine"
-            android:textSize="@dimen/textMediumSize"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            android:text="@string/byLine"
+            android:textSize="@dimen/textSmallSize"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nytm_detail_mpaaRating" />
+            app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
         <TextView
-            android:id="@+id/tv_nytm_detail_headline"
+            android:id="@+id/tv_nytm_detail_publicationDate"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/itemMargin_default"
-            android:layout_marginLeft="@dimen/itemMargin_default"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="@dimen/itemMargin_default"
             android:layout_marginEnd="@dimen/itemMargin_default"
             android:layout_marginRight="@dimen/itemMargin_default"
-            android:text="Isadora’s Children’ Review: Variations on Sorrow"
-            android:textSize="@dimen/textMediumSize"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            android:text="@string/tv_nytm_detail_publicationDate"
+            android:textSize="@dimen/textSmallSize"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
             app:layout_constraintTop_toBottomOf="@+id/tv_nytm_detail_byLine" />
+
+        <TextView
+            android:id="@+id/tv_nytm_detail_updatedDate"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/itemMargin_default"
+            android:layout_marginLeft="@dimen/itemMargin_default"
+            android:layout_marginEnd="@dimen/itemMargin_default"
+            android:layout_marginRight="@dimen/itemMargin_default"
+            android:text="@string/tv_nytm_detail_updatedDate"
+            android:textSize="@dimen/textSmallSize"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nytm_detail_publicationDate" />
 
         <TextView
             android:id="@+id/tv_nytm_detail_summaryShort"
@@ -111,14 +131,14 @@
             android:layout_height="100dp"
             android:layout_marginStart="@dimen/itemMargin_default"
             android:layout_marginLeft="@dimen/itemMargin_default"
-            android:layout_marginTop="@dimen/itemMargin_default"
-            android:layout_marginEnd="@dimen/itemMargin_default"
-            android:layout_marginRight="@dimen/itemMargin_default"
-            android:text="The work of a 20th-century dance innovator inspires four women of the present day in this film, composed like a piece of music by Damien Manivel."
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/tv_nytm_detail_summaryShort"
             android:textSize="@dimen/textMediumSize"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nytm_detail_headline" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_nytm_detail_updatedDate" />
 
         <TextView
             android:id="@+id/tv_nytm_detail_link"
@@ -126,26 +146,18 @@
             android:layout_height="50dp"
             android:layout_marginStart="@dimen/itemMargin_default"
             android:layout_marginLeft="@dimen/itemMargin_default"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/itemMargin_default"
+            android:layout_marginRight="@dimen/itemMargin_default"
+            android:layout_marginBottom="@dimen/itemMargin_default"
             android:autoLink="web"
             android:text="@string/tv_nytm_detail_link"
-            android:textColor="@color/colorInfoDialog"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/textMediumSize"
+            app:layout_constraintBottom_toBottomOf="@id/guideline10"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
             app:layout_constraintTop_toBottomOf="@+id/tv_nytm_detail_summaryShort" />
-
-        <TextView
-            android:id="@+id/tv_nytm_detail_publicationDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/itemMargin_default"
-            android:layout_marginEnd="@dimen/itemMargin_default"
-            android:layout_marginRight="@dimen/itemMargin_default"
-            android:text="2020-09-02"
-            android:textSize="@dimen/textMediumSize"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintTop_toTopOf="@+id/guideline" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline1"
@@ -180,7 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.4" />
+            app:layout_constraintGuide_percent="0.45" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
@@ -189,6 +201,33 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.05" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

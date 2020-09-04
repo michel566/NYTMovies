@@ -18,6 +18,7 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
 
     private var adapter: NYTMoviesAdapter? = null
     private val presenter: NYTMoviesContract.NYTMoviesPresenter = NYTMoviesPresenter(this)
+    lateinit var rvMovies: RecyclerView
     lateinit var context: Context
     var page: Int = 1
 
@@ -29,17 +30,17 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
         super.onCreate(savedInstanceState)
         setLayoutContent(R.layout.nytm_list_activity)
         setToolbar()
-        setToolbarTitle(R.string.toolbarTitleList)
+        setToolbarTitle(R.string.app_name)
 
         context = this@NYTMoviesListActivity
 
         adapterConfig()
-        presenter.getAllMovies(this, "", 0)
+    //    presenter.getAllMovies(this, "", 0)
         showMovies()
     }
 
     private fun adapterConfig() {
-        val rvMovies: RecyclerView = findViewById(R.id.rv_nytMovieList)
+        rvMovies = findViewById(R.id.rv_nytMovieList)
         adapter = NYTMoviesAdapter(this)
         val linearLayoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         rvMovies.layoutManager = linearLayoutManager
@@ -123,6 +124,8 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
     override fun findForQuery(query: String) {
         super.findForQuery(query)
         presenter.getAllMovies(this, query, 0)
+        adapter?.filter?.filter(query)
+        rvMovies.scrollToPosition(0)
     }
 
 }

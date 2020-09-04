@@ -4,18 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".ui.NYTMoviesListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_nytMovieList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/itemMargin_default"
-        android:layout_marginLeft="@dimen/itemMargin_default"
-        android:layout_marginTop="@dimen/itemMargin_default"
-        android:layout_marginEnd="@dimen/itemMargin_default"
-        android:layout_marginRight="@dimen/itemMargin_default"
-        android:layout_marginBottom="@dimen/itemMargin_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

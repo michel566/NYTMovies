@@ -5,12 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.michelbarbosa.nytmovies.R
 import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.ui.NYTMoviesAdapter.NYTMoviesViewHolder
+import com.michelbarbosa.nytmovies.util.UiUtil
 import kotlin.collections.ArrayList
 
 class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) :
@@ -81,11 +83,19 @@ class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) 
     inner class NYTMoviesViewHolder(itemView: View) :
         ViewHolder(itemView) {
         private var movie: Movie? = null
+        private val ivMovie: ImageView = itemView.findViewById(R.id.iv_item)
         private val tvTitle: TextView = itemView.findViewById(R.id.tv_item_title)
+        private val byLine: TextView = itemView.findViewById(R.id.tv_item_byLine)
+        private val headLine: TextView = itemView.findViewById(R.id.tv_item_headLine)
+        private val ivFavorite: ImageView = itemView.findViewById(R.id.iv_item_favorite)
 
         fun bind(movie: Movie) {
             this.movie = movie
+            UiUtil.loadPicture(ivMovie, movie.urlPicture)
             tvTitle.text = movie.title
+            byLine.text = movie.byLine
+            headLine.text = movie.headLine
+            UiUtil.setTintFavoriteIcon(itemView.resources, ivFavorite, movie.favorite)
         }
 
         init {

@@ -1,12 +1,14 @@
 <resources>
-    <string name="app_name">NYTMovies</string>
+    <string name="app_name">NYT Movies</string>
 
     <string name="action_search">Search</string>
-    <string name="toolbarTitleList">All Movies</string>
 
-    <string name="tv_nytm_detail_link">See More: %s</string>
-    <string name="tv_nytm_detail_byLine">By line %s</string>
+    <string name="tv_title">Isadora\'s Children</string>
+    <string name="tv_nytm_detail_link">See More: <s>%s</s></string>
+    <string name="byLine">By %s</string>
     <string name="tv_nytm_detail_mpaaRating">Film Rating: %s</string>
+    <string name="tv_nytm_detail_publicationDate">Published %s</string>
+    <string name="tv_nytm_detail_summaryShort">The work of a 20th-century dance innovator inspires four women of the present day in this film, composed like a piece of music by Damien Manivel. | %s</string>
 
     <string name="msg_Erro404">404 - Servidor não responde</string>
     <string name="msg_Erro500">500 - Servidor não encontrado, favor comunicar ao nosso suporte</string>
@@ -16,5 +18,13 @@
 
     <string name="exception_timeout">SocketTimeoutException</string>
     <string name="exception_json_objreturn">IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT</string>
+
+    <string name="chooser_your_webNav">Choose your web navigator</string>
+    <string name="toast_unfavorite">"%s is not your favorite movie"</string>
+    <string name="toast_favorite">%s is your favorite movie</string>
+    <string name="toast_noHaveBrowser">There is no browser installed on your device</string>
+    <string name="toast_content_notAvail">Content not available</string>
+    <string name="tv_nytm_detail_updatedDate">Updated %s</string>
+    <string name="tv_headLine">Isadora’s Children’ Review: Variations on Sorrow</string>
 
 </resources>
