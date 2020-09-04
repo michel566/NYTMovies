@@ -13,7 +13,6 @@ import com.michelbarbosa.nytmovies.R
 import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.ui.NYTMoviesAdapter.NYTMoviesViewHolder
 import com.michelbarbosa.nytmovies.util.UiUtil
-import kotlin.collections.ArrayList
 
 class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) :
     RecyclerView.Adapter<NYTMoviesViewHolder>(), Filterable {
@@ -28,16 +27,16 @@ class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) 
 
     fun setMovieList(movieList: List<Movie>?) {
         this.movieList = movieList as MutableList<Movie>?
-        if(movieList != null){
+        if (movieList != null) {
             movieListFull = ArrayList(movieList)
         }
         notifyDataSetChanged()
     }
 
-    fun getMovieList(): List<Movie>?{
+    fun getMovieList(): List<Movie>? {
         return if (movieList!!.isNotEmpty())
             this.movieList
-        else{
+        else {
             null
         }
     }
@@ -69,7 +68,7 @@ class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) 
                 val queryString = charSequence?.toString()?.toLowerCase()
 
                 val filterResults = FilterResults()
-                filterResults.values = if (queryString==null || queryString.isEmpty())
+                filterResults.values = if (queryString == null || queryString.isEmpty())
                     movieListFull
                 else
                     movieListFull.filter {
@@ -104,8 +103,5 @@ class NYTMoviesAdapter(private val movieClickListener: ItemMovieClickListener?) 
             }
         }
     }
-
-
-
 
 }

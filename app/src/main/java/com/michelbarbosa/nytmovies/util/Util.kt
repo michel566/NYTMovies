@@ -1,6 +1,7 @@
 package com.michelbarbosa.nytmovies.util
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Build
 import com.michelbarbosa.nytmovies.R
 import michel566.androidmodules.lightdialog.DialogType
@@ -33,6 +34,17 @@ object Util {
         }
     }
 
-
+    fun isFirstInstall(context: Context): Boolean {
+        return try {
+            val firstInstallTime: Long = context.packageManager
+                .getPackageInfo(context.packageName, 0).firstInstallTime
+            val lastUpdateTime: Long = context.packageManager
+                .getPackageInfo(context.packageName, 0).lastUpdateTime
+            firstInstallTime == lastUpdateTime
+        } catch (e: PackageManager.NameNotFoundException) {
+            e.printStackTrace()
+            true
+        }
+    }
 
 }

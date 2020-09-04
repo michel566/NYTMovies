@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClientInstance {
 
     private var INSTANCE: NYTMoviesService? = null
-    private val BASE_URL = "https://api.nytimes.com/svc/movies/v2/"
+    private const val BASE_URL = "https://api.nytimes.com/svc/movies/v2/"
 
     val instance: NYTMoviesService?
         get() {
