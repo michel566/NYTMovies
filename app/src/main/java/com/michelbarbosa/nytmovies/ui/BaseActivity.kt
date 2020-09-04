@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.Layout
 import android.util.TypedValue
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,7 @@ import com.michelbarbosa.nytmovies.ui.NYTMoviesListActivity
 open class BaseActivity : AppCompatActivity() {
     private var toolbar: Toolbar? = null
     protected lateinit var movieViewModel: MovieViewModel
+    protected var rootLayout: RelativeLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +59,7 @@ open class BaseActivity : AppCompatActivity() {
 
     fun setLayoutContent(resourceContentView: Int) {
         val dinamicContent = findViewById<RelativeLayout>(R.id.content)
+        rootLayout = dinamicContent
         val view =
             layoutInflater.inflate(resourceContentView, dinamicContent, false)
         dinamicContent.addView(view)

@@ -2,17 +2,20 @@ package com.michelbarbosa.nytmovies.util
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.michelbarbosa.nytmovies.R
+import com.squareup.picasso.Picasso
 import michel566.androidmodules.lightdialog.DialogType
 import michel566.androidmodules.lightdialog.LightDialog
 
@@ -116,15 +119,26 @@ object UiUtil {
         dialogBox.show()
     }
 
+    fun loadPicture(imageView: ImageView?, uri: String?){
+        if (!uri.isNullOrEmpty()){
+            Picasso.get()
+                .load(uri)
+                .resize(210,140)
+                .into(imageView)
+        } else{
+            Picasso.get()
+                .load(R.drawable.image_not_available)
+                .resize(210,140)
+                .into(imageView)
+        }
+    }
+
+    fun setTintFavoriteIcon(res: Resources?, imageView: ImageView?, isActive: Boolean){
+        if (isActive) {
+            imageView!!.setImageDrawable(res?.getDrawable(R.drawable.ic_star))
+        } else {
+            imageView!!.setImageDrawable(res?.getDrawable(R.drawable.ic_star_border))
+        }
+    }
+
 }
-
-
-/*
-
- val dialogInfo = LightDialog(
-                    context, context.resources
-                        .getString(resourceMessage), dialogType
-                )
-                dialogInfo.show()
-
- */

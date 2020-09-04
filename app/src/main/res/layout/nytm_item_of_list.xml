@@ -2,7 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="200dp"
+    android:background="@color/colorBackground">
+
+    <View
+        android:id="@+id/div_item"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_item"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/itemMargin_default"
+        android:layout_marginLeft="@dimen/itemMargin_default"
+        android:layout_marginTop="@dimen/itemMargin_default"
+        android:layout_marginBottom="@dimen/itemMargin_default"
+        android:scaleType="centerCrop"
+        android:src="@drawable/image_not_available"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/div_item" />
 
     <TextView
         android:id="@+id/tv_item_title"
@@ -11,12 +33,50 @@
         android:layout_marginStart="@dimen/itemMargin_default"
         android:layout_marginLeft="@dimen/itemMargin_default"
         android:layout_marginTop="@dimen/itemMargin_default"
+        android:text="@string/tv_title"
+        android:textSize="@dimen/textBigSize"
+        app:layout_constraintStart_toEndOf="@+id/iv_item"
+        app:layout_constraintTop_toBottomOf="@+id/div_item" />
+
+    <TextView
+        android:id="@+id/tv_item_byLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/itemMargin_default"
+        android:layout_marginLeft="@dimen/itemMargin_default"
+        android:layout_marginTop="8dp"
+        android:text="@string/byLine"
+        android:textSize="@dimen/textSmallSize"
+        app:layout_constraintStart_toEndOf="@+id/iv_item"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_title" />
+
+    <TextView
+        android:id="@+id/tv_item_headLine"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/itemMargin_default"
+        android:layout_marginLeft="@dimen/itemMargin_default"
+        android:layout_marginTop="@dimen/itemMargin_default"
+        android:layout_marginEnd="@dimen/itemMargin_default"
+        android:layout_marginRight="@dimen/itemMargin_default"
         android:layout_marginBottom="@dimen/itemMargin_default"
-        android:text="Título Exemplo"
-        android:textSize="16sp"
+        android:lines="4"
+        android:text="@string/tv_headLine"
+        app:layout_constraintBottom_toTopOf="@+id/iv_item_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_item"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_byLine" />
+
+    <ImageView
+        android:id="@+id/iv_item_favorite"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="@dimen/detailMargin_image"
+        android:layout_marginRight="@dimen/detailMargin_image"
+        android:layout_marginBottom="@dimen/detailMargin_image"
+        android:src="@drawable/ic_star_border"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
