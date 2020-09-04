@@ -121,14 +121,14 @@ class NYTMovieDetailActivity : BaseActivity() {
     }
 
     private fun shareMovieForExternalApp(uriReview: String) {
-        if (!uriReview.isNullOrBlank()) {
+        if (!uriReview.isBlank()) {
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
                 putExtra(Intent.EXTRA_TEXT, "$uriReview by NYTMovies")
                 type = "text/plain"
             }
             val shareIntent =
-                Intent.createChooser(sendIntent, "Esse e um teste de envio de imagem do meu app")
+                Intent.createChooser(sendIntent, resources.getString(R.string.chooser_your_sharedApp))
             startActivity(shareIntent)
 
         } else {

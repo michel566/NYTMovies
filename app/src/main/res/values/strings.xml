@@ -19,7 +19,8 @@
     <string name="exception_timeout">SocketTimeoutException</string>
     <string name="exception_json_objreturn">IllegalStateException: Expected BEGIN_ARRAY but was BEGIN_OBJECT</string>
 
-    <string name="chooser_your_webNav">Choose your web navigator</string>
+    <string name="chooser_your_webNav">Choose your web browser</string>
+    <string name="chooser_your_sharedApp">Choose your app what you want shared this your movie</string>
     <string name="toast_unfavorite">"%s is not your favorite movie"</string>
     <string name="toast_favorite">%s is your favorite movie</string>
     <string name="toast_noHaveBrowser">There is no browser installed on your device</string>

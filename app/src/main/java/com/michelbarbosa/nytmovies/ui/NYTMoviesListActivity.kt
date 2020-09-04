@@ -10,8 +10,10 @@ import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.enums.ErrorType
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesContract
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesPresenter
+import com.michelbarbosa.nytmovies.util.Util
 import michel566.androidmodules.lightdialog.DialogType
 import michel566.androidmodules.lightdialog.LightDialog
+
 
 class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
     ItemMovieClickListener {
@@ -19,7 +21,7 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
     private var adapter: NYTMoviesAdapter? = null
     private val presenter: NYTMoviesContract.NYTMoviesPresenter = NYTMoviesPresenter(this)
     lateinit var rvMovies: RecyclerView
-    lateinit var context: Context
+    var context: Context = this@NYTMoviesListActivity
     var page: Int = 1
 
     companion object {
@@ -32,10 +34,10 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
         setToolbar()
         setToolbarTitle(R.string.app_name)
 
-        context = this@NYTMoviesListActivity
-
         adapterConfig()
-    //    presenter.getAllMovies(this, "", 0)
+        if (Util.isFirstInstall(context)) {
+            presenter.getAllMovies(this, "", 0)
+        }
         showMovies()
     }
 
@@ -65,7 +67,6 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
     }
 
     override fun onClickMovie(movie: Movie) {
-        // Toast.makeText(this, movie.dateUpdated, Toast.LENGTH_SHORT).show()
         advanceToMovieDetails(context, REF_MOVIE, movie)
     }
 
@@ -124,8 +125,11 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
     override fun findForQuery(query: String) {
         super.findForQuery(query)
         presenter.getAllMovies(this, query, 0)
-        adapter?.filter?.filter(query)
-        rvMovies.scrollToPosition(0)
+        scrollToPositionList(0)
+    }
+
+    fun scrollToPositionList(pos: Int) {
+        rvMovies.scrollToPosition(pos)
     }
 
 }

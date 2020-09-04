@@ -67,7 +67,7 @@ object UiUtil {
     fun showDialog(context: Context?, resourceMessage: Int, dialogType: DialogType?) {
         if (context != null) {
             if (Util.checkminimalAPI(Build.VERSION_CODES.LOLLIPOP)) {
-                val dialog: LightDialog =
+                val dialog =
                     LightDialog(context, context.resources?.getString(resourceMessage), dialogType)
                 dialog.show()
             } else {
@@ -79,7 +79,7 @@ object UiUtil {
     fun showDialog(context: Context?, message: String, dialogType: DialogType?) {
         if (context != null) {
             if (Util.checkminimalAPI(Build.VERSION_CODES.LOLLIPOP)) {
-                val dialog: LightDialog = LightDialog(context, message, dialogType)
+                val dialog = LightDialog(context, message, dialogType)
                 dialog.show()
             } else {
                 showAlertDialog(context, message, dialogType)
