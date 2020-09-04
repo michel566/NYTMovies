@@ -10,6 +10,8 @@ import com.michelbarbosa.nytmovies.data.dao.movie.Movie
 import com.michelbarbosa.nytmovies.enums.ErrorType
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesContract
 import com.michelbarbosa.nytmovies.presenter.NYTMoviesPresenter
+import com.michelbarbosa.nytmovies.util.ConnectionQualityEnum
+import com.michelbarbosa.nytmovies.util.NetworkUtil
 import com.michelbarbosa.nytmovies.util.Util
 import michel566.androidmodules.lightdialog.DialogType
 import michel566.androidmodules.lightdialog.LightDialog
@@ -35,9 +37,19 @@ class NYTMoviesListActivity : ListActivity(), NYTMoviesContract.ShowMoviesView,
         setToolbarTitle(R.string.app_name)
 
         adapterConfig()
-        if (Util.isFirstInstall(context)) {
-            presenter.getAllMovies(this, "", 0)
+        if (NetworkUtil.isIdealConnection(context, ConnectionQualityEnum.WEAK, false)) {
+            if (Util.isFirstInstall(context)) {
+                presenter.getAllMovies(this, "", 0)
+            }
+        } else {
+            val dialog: LightDialog = LightDialog(context, "Please, check your connection", DialogType.ERROR, false)
+            dialog.show()
+            dialog.onOptionConfirmClickListener({
+                dialog.dismiss()
+                finishAffinity()
+            }, "ok")
         }
+
         showMovies()
     }
 
